@@ -91,6 +91,8 @@ function transferSeedingToTransplant() {
   transplantSheet.getRange(transplantNextEmptyRow, 4).setValue(color)
   transplantSheet.getRange(transplantNextEmptyRow, 6).setValue(sPeople);
 
+  transplantSheet.setActiveRange(transplantSheet.getRange(transplantNextEmptyRow, 5));
+
   return null;
 }
 
@@ -142,7 +144,9 @@ function transferTransplantToHarvest() {
   harvestSheet.getRange(harvestPrevRow + 1, 4).setValue(transplantRow);
   harvestSheet.getRange(harvestPrevRow + 1, 5).setValue(transplantPeople);
   harvestSheet.getRange(harvestPrevRow + 1, 6).setValue(seedingPeople);
-  harvestSheet.getRange(harvestPrevRow + 1, 7).setValue(transplantColor)
+  harvestSheet.getRange(harvestPrevRow + 1, 7).setValue(transplantColor);
+
+  harvestSheet.setActiveRange(harvestSheet.getRange(harvestPrevRow + 1, 3))
 
   return null;
 }
@@ -203,6 +207,7 @@ function transferHarvestToDistribution() {
   distroSheet.getRange(lastRow, 5).setValue(customerName);
   distroSheet.getRange(lastRow, 6).setValue(currentDate);
   
+  distroSheet.setActiveRange(distroSheet.getRange(lastRow, 3))
 }
 
 // Used to detect if a change on cell B1 happened
@@ -251,4 +256,5 @@ function onEdit(e) {
       
     }
   }
+}
 
